@@ -2,7 +2,9 @@
 
 The National Health and Nutrition Examination Survey (NHANES) is a survey research program conducted by the National Center for Health Statistics (NCHS) to assess the health and nutritional status of adults and children in the United States, and to track changes over time. The survey combines interviews, physical examinations and laboratory tests.
 
-This code can be used to quickly download the data you need. The code is copied from https://zenodo.org/record/2440203#.YzX3I0pByXI and put conveniently into one file.
+This code can be used to quickly download the data you need. It saves the source files into a `data` subfolder and creates a file `nhanes.csv` with all the data.
+
+The code is copied from https://zenodo.org/record/2440203#.YzX3I0pByXI and put conveniently into one file with small changes.
 Shoutout to the original author - Christopher Kelly.
 I found the code by first reading the article [An interpretable machine learning model of biological age](https://f1000research.com/articles/8-17/v1).
 
