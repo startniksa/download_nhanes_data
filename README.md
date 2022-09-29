@@ -18,6 +18,12 @@ virtualenv venv -p python3
 pip install -r requirements.txt
 ```
 
+# Use
+
+```
+python download_files.py
+```
+
 # Download more data
 
 I added Vitamin D data. I had to go to the website and find the name of the files and columns for each survey.
