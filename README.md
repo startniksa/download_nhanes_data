@@ -46,3 +46,8 @@ The files which are downloaded already contain the WBC data. We just needed to a
 
 However, the 2001-2002 data contained two values for WBC: LB2WBCSI and LBXWBCSI. This resulted in two columns, the second one called WBC_y.
 Therefore be careful which variable you actually need. There were two different values for the same patients.
+
+
+---
+
+Added the "Body weight", "Waist Circumference" and "Standing Height (cm) data.

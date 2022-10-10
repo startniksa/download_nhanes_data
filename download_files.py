@@ -19,6 +19,7 @@ input_files = {
         'LAB18',
         'LAB06',
         'LAB13AM',
+        'BMX',#newly added
     ],
     '2001-2002': [
         'L25_B',
@@ -32,6 +33,7 @@ input_files = {
         'L06_2_B',
         'L40FE_B',
         "VID_B",#newly added
+        "BMX_B",#newly added
     ],
     '2003-2004': [
         'L25_C',
@@ -44,6 +46,7 @@ input_files = {
         'L13AM_C',
         'L40FE_C',
         "VID_C",#newly added
+        "BMX_C",#newly added
     ],
     '2005-2006': [
         'CBC_D',
@@ -54,6 +57,7 @@ input_files = {
         'FETIB_D',
         'TCHOL_D',
         "VID_D",#newly added
+        "BMX_D",#newly added
     ],
     '2007-2008': [
         'CBC_E',
@@ -63,6 +67,7 @@ input_files = {
         'FERTIN_E',
         'TCHOL_E',
         "VID_E",#newly added
+        "BMX_E",#newly added
     ],
     '2009-2010': [
         'CBC_F',
@@ -72,6 +77,7 @@ input_files = {
         'FERTIN_F',
         'TCHOL_F',
         "VID_F",#newly added
+        "BMX_F",#newly added
             ],
     '2011-2012': [
         'CBC_G',
@@ -80,6 +86,7 @@ input_files = {
         'BIOPRO_G',
         'TCHOL_G',
         "VID_G",#newly added
+        "BMX_G",#newly added
         ],
     '2013-2014': [
         'CBC_H',
@@ -89,6 +96,7 @@ input_files = {
         'TCHOL_H',
         'TRIGLY_H',
         "VID_H",#newly added
+        "BMX_H",#newly added
         ],
     '2015-2016': [
         'CBC_I',
@@ -97,6 +105,7 @@ input_files = {
         'BIOPRO_I',
         'TCHOL_I',
         "VID_I",#newly added
+        "BMX_I",#newly added
         ]
 }
 
@@ -161,6 +170,9 @@ input_col_map = {
   "LBXWBCSI": "WBC",# White blood cell count, newly added
   "LBDSBUSI": "BUN (mmol/L)",#Blood urea nitrogen, newly added
   "LBDSUASI": "Uric acid (umol/L)",#newly added
+  "BMXWT": "Weight (kg)",#newly added
+  "BMXWAIST": "Waist Circumference (cm)",#newly added
+  "BMXHT": "Standing Height (cm)",#newly added
 }
 included_markers = input_col_map.values()
 
