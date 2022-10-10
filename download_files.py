@@ -13,12 +13,12 @@ NHANES_SUFFIX = '.XPT'
 
 input_files = {
     '1999-2000': [
-	'LAB25',
-	'DEMO',
-	'LAB13',
-	'LAB18',
-	'LAB06',
-	'LAB13AM',
+        'LAB25',
+        'DEMO',
+        'LAB13',
+        'LAB18',
+        'LAB06',
+        'LAB13AM',
     ],
     '2001-2002': [
         'L25_B',
@@ -31,7 +31,7 @@ input_files = {
         'L40_2_B',
         'L06_2_B',
         'L40FE_B',
-        "L06VID_B"#newly added
+        "VID_B",#newly added
     ],
     '2003-2004': [
         'L25_C',
@@ -43,7 +43,7 @@ input_files = {
         'L06TFR_C',
         'L13AM_C',
         'L40FE_C',
-        "L06VID_C"#newly added
+        "VID_C",#newly added
     ],
     '2005-2006': [
         'CBC_D',
@@ -53,7 +53,7 @@ input_files = {
         'FERTIN_D',
         'FETIB_D',
         'TCHOL_D',
-        "VIDRIA_D"#newly added
+        "VID_D",#newly added
     ],
     '2007-2008': [
         'CBC_E',
@@ -62,6 +62,7 @@ input_files = {
         'HDL_E',
         'FERTIN_E',
         'TCHOL_E',
+        "VID_E",#newly added
     ],
     '2009-2010': [
         'CBC_F',
@@ -70,14 +71,16 @@ input_files = {
         'HDL_F',
         'FERTIN_F',
         'TCHOL_F',
-    ],
+        "VID_F",#newly added
+            ],
     '2011-2012': [
         'CBC_G',
         'DEMO_G',
         'HDL_G',
         'BIOPRO_G',
         'TCHOL_G',
-    ],
+        "VID_G",#newly added
+        ],
     '2013-2014': [
         'CBC_H',
         'DEMO_H',
@@ -85,14 +88,16 @@ input_files = {
         'BIOPRO_H',
         'TCHOL_H',
         'TRIGLY_H',
-    ],
+        "VID_H",#newly added
+        ],
     '2015-2016': [
         'CBC_I',
         'DEMO_I',
         'HDL_I',
         'BIOPRO_I',
         'TCHOL_I',
-    ]
+        "VID_I",#newly added
+        ]
 }
 
 input_col_map = {
@@ -127,7 +132,7 @@ input_col_map = {
   'LBXSCLSI': 'Chloride, Serum',
   'LBXSLDSI': 'LDH',
   'LB2SLDSI': 'LDH',
-  'LBXSBU': 'BUN',
+  'LBXSBU': 'BUN (mg/dL)',
   'LBXSASSI': 'AST (SGOT)',
   'LBXSATSI': 'ALT (SGPT)',
   'LBXSTB': 'Bilirubin, Total',
@@ -150,8 +155,12 @@ input_col_map = {
   'LBXHGB': 'Hemoglobin',
   'LBDLDL': 'LDL-C',
   'LBXMPSI': 'MPV',
-  "LBDVID": "Vitamin D",#newly added
-  "LBXVID": "Vitamin D",#newly added
+  "LB2VID": "Vitamin D (ng/mL)",#newly added
+  "LBDVIDMS": "Vitamin D (nmol/L)",#newly added
+  "LBXVD3MS": "Vitamin D3 (nmol/L)",#newly added
+  "LBXWBCSI": "WBC",# White blood cell count, newly added
+  "LBDSBUSI": "BUN (mmol/L)",#Blood urea nitrogen, newly added
+  "LBDSUASI": "Uric acid (umol/L)",#newly added
 }
 included_markers = input_col_map.values()
 
@@ -184,8 +193,7 @@ def download(datadir, input_files=input_files):
 
 def get_df(datadir, fname, key):
     fname = get_fname(fname)
-    if fname in ["VIDRIA_D.XPT", "L06VID_B.XPT", "L06VID_C.XPT"]:
-        print(1)
+    print(fname)
     df = xport.to_dataframe(open(datadir / fname, 'rb'))
     df.set_index(key, inplace=True)
     df.drop(df.columns.difference(all_cols), axis=1, inplace=True)
@@ -209,7 +217,7 @@ def join_input(datadir, year, key='SEQN'):
 def join_all(datadir):
     dfs = []
     included_markers = input_col_map.values()
-    for year in sorted(input_files.keys(), reverse=True):
+    for year in sorted(input_files.keys(), reverse=False):
         df = join_input(datadir, year)
         dfs.append(df)
         print(f'Checking for missing columns in {year}... ', end='')
@@ -223,6 +231,8 @@ def join_all(datadir):
 
 # Name the place where data files will be downloaded from the CDC website
 datadir = Path('./data')
+# Create the folder if ti doesn't exist
+Path(datadir).mkdir(parents=True, exist_ok=True)
 # Name the file where the preprocessed data will be saved as one Pandas DataFrame
 fname = 'nhanes.csv'
 
